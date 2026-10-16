@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:16
+    container_name: juegoteca-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB : ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports: 
+      - "5432:5432"
+    volumes: 
+      - juegoteca_data:/var/lib/postgresql/juegoteca_data
+
+volumes:
+  juegoteca_data:
